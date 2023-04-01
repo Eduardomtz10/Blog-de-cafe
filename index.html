@@ -2,16 +2,27 @@
 <html lang="en">
 <head> <!--Va todo lo que es importante para que el navegador para que pueda cargar el proyecto de la forma en que nosotros lo construimos. Pero es la parte que no es visual para el usuario final. -->
     <meta charset="UTF-8"> <!--Para que el navegador entienda caracteres especiales-->
-    <meta name="description" content="Está pagina es un blog donde podras encontrar recetas, cursos e información sobre café "> <!--Da la descripción que aparece abajo de la URL cuando-->
+    <meta name="description" content="Está pagina es un blog donde podras encontrar recetas, cursos e información sobre café "> <!--Da la descripción que aparece abajo de la URL-->
     <meta name="robots" content="index,follow"> <!--Da autorización a los buscadores para que puedan posicionar nuestra página si hay alguna busqueda que tenga que ver con nuestro contenido-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Hace que nuestras paginas puedan ser responsive-->
     <title>BlogDeCafé</title>
-    <link rel="stylesheet" href="css/normalize.css"> <!--Enalazamos la hoja de normalize CSS al HTML-->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet"> <!--Copeamos y pegamos la fuente que elegimos de google fonts para HTML (desde donde empieza <link href="https://)-->
-    <link rel="stylesheet" href="css/style.css"> <!--(shif+alt+flecha abajo) para duplicar una liena-->
 
+    <!--PREFETCH (Carga mas rapido alguna pagina de nuestra plataforma web)-->
+    <link rel="prefetch" href="cursos.html" as="document"> <!--El prefecth se ocupa en la pagina que sea de mas interes para los usuarios (estos datos se pueden obetener con google analytics)-->
+    
+    
+    <!--PRELOAD (Carga lo mas pronto posible el elemento que se considere necesario-->
+    <link rel="preload" href="css/normalize.css" as="style"> <!--El rel nos dice que relación tiene el este archivo con el documento, as indica como queremos cargar el documento, en este caso es una hoja de estilos -->
+    <link rel="stylesheet" href="css/normalize.css"> <!--Enalazamos la hoja de normalize CSS al HTML-->
+
+    <link rel="preload" href="css/style.css" as="style"> 
     <link rel="stylesheet" href="css/style.css"> <!--Enalazamos la hoja de estilos CSS al HTML-->
+
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" crossorigin="crossorigin" as="font"> <!--Se ocupan crossorigin porque es una referencia externa-->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet"> <!--Copeamos y pegamos la fuente que elegimos de google fonts para HTML (desde donde empieza <link href="https://)-->
+    
+    
 </head>
 <body> <!--Va todo lo que si puede ver el usuario final.-->
     <header class="header">
@@ -44,7 +55,11 @@
             <h3>Nuestro Blog</h3>
 
             <article class="entrada"> <!--Se ocupa para la entrada de texto en blogs, noticias, etc.-->
-                <img class= "entrada__imagen" src="img/blog1.jpg" alt="imgblog1">
+                <picture>
+                    <source loading="lazy" srcset="img/blog1.webp" type="image/webp">
+                    <img loading="lazy" class= "entrada__imagen" src="img/blog1.jpg" alt="imgblog1"> <!--loading="lazy" Siempre que se tengan imagenes es bueno ocuparlo ya que espera hasta llegar a esa imagen para cargarla y asi no carga todas las imagenes de golpe -->
+                </picture>
+                
 
                 <div class="entrada__contenido">
                     <h4 class="no-margin">Tipos de Grano de Café</h4>
@@ -57,7 +72,11 @@
             </article> <!--Fin .entrada-->
 
             <article class="entrada"> <!--Se ocupa para la entrada de texto en blogs, noticias, etc.-->
-                <img class= "entrada__imagen" src="img/blog2.jpg" alt="imgblog1">
+                <picture>
+                    <source loading="lazy" srcset="img/blog2.webp" type="image/webp">
+                    <img  loading="lazy" class= "entrada__imagen" src="img/blog2.jpg" alt="imgblog1">
+                </picture>
+                
 
                 <div class="entrada__contenido">
                     <h4 class="no-margin">3 Deliciosas Recetas de Café</h4>
@@ -70,7 +89,11 @@
             </article> <!--Fin .entrada-->
 
             <article class="entrada"> <!--Se ocupa para la entrada de texto en blogs, noticias, etc.-->
-                <img class= "entrada__imagen" src="img/blog3.jpg" alt="imgblog1">
+                <picture> <!--Proporciona diferentes versiones de una imagene y el navegador en el que se vea selecciona el formato mas adecudo y ese muestra-->
+                    <source loading="lazy" srcset="img/blog3.webp" type="image/webp"> <!--Especifica la ubicación y el formato de la imagen  -->
+                    <img  loading="lazy" class= "entrada__imagen" src="img/blog3.jpg" alt="imgblog1"> <!--Proporciona una imagen de respaldo para dispositivos que no pueden mostrar la imagen principal.-->
+                </picture>
+                
 
                 <div class="entrada__contenido">
                     <h4 class="no-margin">Beneficios del Café</h4>
@@ -92,7 +115,7 @@
                     <h4 class="no-margin">Técnicas de Extracción de Café</h4> <!--Los h (headers) agregan un margin automatico-->
                     <p class="widget-curso__label">Precio: <span class="widget-curso__info">Gratis</span></p>
                     <p class="widget-curso__label">Cupo: <span class="widget-curso__info">20</span></p>
-                    <a class="boton boton--secundario" href="entrada.html">Más información</a>
+                    <a class="boton boton--secundario" href="entrada.html">Más información sobre nuestros cursos y talleres</a>
 
                 </li> 
 
@@ -100,7 +123,7 @@
                     <h4 class="no-margin">4 Recetas de Café para Principiantes</h4>
                     <p class="widget-curso__label">Precio: <span class="widget-curso__info">Gratis</span></p>
                     <p class="widget-curso__label">Cupo: <span class="widget-curso__info">20</span></p>
-                    <a class="boton boton--secundario" href="entrada.html">Más información</a>
+                    <a class="boton boton--secundario" href="entrada.html">Más información sobre nuestros cursos y talleres</a>
 
                 </li> 
 
@@ -128,5 +151,7 @@
         </div>
             
     </footer>
+    <!--Codigo JS-->
+    <script src="js/modernizr.js"></script> 
 </body>
 </html>

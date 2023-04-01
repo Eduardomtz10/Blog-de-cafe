@@ -77,14 +77,20 @@ img{
     text-align: center;
 }
 
-/*HEADER*/
-
+/*HEADER*/ 
 .header{
-    background-image: url(../img/banner.jpg);
     height: 60rem;
     background-size: cover; /*Amplia la imagen de fondo para cubrir todo el espacio de la pantalla*/
     background-repeat: no-repeat; /*No repite la imagen de fondo */
     background-position: center center; /*Que parte de la imagen de fondo queremos que se vea. En este caso queremos que se muestre el centro de la imgen.El primer valor lo centra horizontalmente y el segundo lo centra vertical.*/
+}
+
+.webp .header{ /*Si el navegador soporta el formato de immagenes webp*/
+    background-image: url(../img/banner.webp);  
+}
+
+.no-webp .header{/*En caso de que el navegador no soporte el formato de immagenes webp*/
+    background-image: url(../img/banner.jpg); 
 }
 
 .header__texto{
